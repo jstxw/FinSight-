@@ -9,8 +9,8 @@ const AuthLayout = ({children}) => {
             <h2 className="text-lg font-medium text-black"> Expense Tracker</h2>
             {children}
         </div>
-    <div className="hidden md:block w-[40vw] h-screen bg-violet-50 bg-auth-bg-img bg-cover bg-no-repeat bg-center overflow-hidden p-8 relative">
-        <div className="w-24 h-24 rounded-[40px] bg-purple-600 absolute -top-[-20px] -left-[-20px] z-0"/>
+        <div className="hidden md:block w-[40vw] h-screen bg-violet-50 bg-auth-bg-img bg-cover bg-no-repeat bg-center overflow-hidden p-8 relative">
+         <div className="absolute -top-4 -left-4 w-24 h-24 rounded-[40px] bg-purple-600 z-0 opacity-90" />
         
         <div className="w-48 h-56 rounded-[40px] border-[20px] border-fuchsia-600 absolute top-[30%] -right-10"/>
         <div className="w-48 h-48 rounded-[40px] bg-violet-500 absolute -bottom-7 -left-9"/>
@@ -36,9 +36,9 @@ const AuthLayout = ({children}) => {
 
 export default AuthLayout
 
-const StatsInfoCard = ({icon, label, value, colour}) => {
-    return <div className="flex gap-6 bg-white p-4 rounded-xl shadow-purple-400/10 border border-gray-200/50 z-10">
-        <div className={`w-12 h-12 flex items-center justify-center text-[26px] text-white ${colour} rounded-full drop-shadow-xl z-10`}>
+const StatsInfoCard = ({icon, label, value, color}) => {
+    return <div className="flex gap-6 bg-white p-4 rounded-xl shadow-purple-400/10 border border-gray-200/50 z-20 shadow-2xl">
+        <div className={`w-12 h-12 flex items-center justify-center text-[26px] text-white ${color} rounded-full drop-shadow-xl z-10`}>
         {icon}
         </div>
         <div>
