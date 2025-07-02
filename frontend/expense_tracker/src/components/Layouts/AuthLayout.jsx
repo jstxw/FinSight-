@@ -1,5 +1,6 @@
 import React from 'react';
-import image1graph from "../assets/images/image1graph.png";
+//import image1graph from "../../../assets/images/image1graph.png";
+
 import  {LuTrendingUpDown} from "react-icons/lu";
 
 const AuthLayout = ({children}) => {
@@ -24,9 +25,9 @@ const AuthLayout = ({children}) => {
         </div>
 
 
-        <img
+        {/* <img
         src={image1graph}
-        className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"/>
+        className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"/> */}
 
 
     </div>
