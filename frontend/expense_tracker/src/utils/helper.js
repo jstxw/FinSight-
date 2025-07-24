@@ -1,3 +1,5 @@
+import moment from "moment";
+
 //purpose, checks if the given string is a valid email format. get two initials from a fullname string and return in uppercase
 
 export const validateEmail = (email) => {
@@ -36,6 +38,19 @@ export const prepareExpenseBarChartData = (data = []) => {
   const chartData = data.map((item) => ({
     category: item?.category,
     amount: item?.amount,
+  }));
+
+  return chartData;
+};
+
+export const prepareIncomeBarChartData = (data = []) => {
+  const sortedData = [...data].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+  const chartData = sortedData.map((item) => ({
+    month: moment(item?.date).format("Do MMM"),
+    amount: item?.amount,
+    source: item?.source,
   }));
 
   return chartData;

@@ -12,7 +12,7 @@ import {
   Cell,
 } from "recharts";
 
-const CustomBarChart = ({ data }) => {
+const CustomBarChart = ({ data = [] }) => {
   // Function to alternate colors
   const getBarColor = (index) => {
     return index % 2 === 0 ? "#875cf5" : "#cfbefb";
@@ -37,6 +37,10 @@ const CustomBarChart = ({ data }) => {
 
     return null;
   };
+
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div className="text-center py-10">No data to display</div>;
+  }
 
   return (
     <div className="bg-white mt-6">
