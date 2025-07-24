@@ -10,8 +10,10 @@ const SideMenu = ({ activeMenu }) => {
   const navigate = useNavigate();
 
   const handleClick = (route) => {
-    if (route === "logout") {
-      handleLogout();
+    if (route.toLowerCase() === "logout") {
+      localStorage.clear();
+      clearUser();
+      navigate("/login");
       return;
     }
     navigate(route);
@@ -47,12 +49,11 @@ const SideMenu = ({ activeMenu }) => {
       {SIDE_MENU_DATA.map((item, index) => (
         <button
           key={`menu_${index}`}
-          className={`w-full flex items-center gap-4 text-[15px] "bg-blue-500 text-black px-4 py-2 rounded hover:bg-purple-600 transition-colors duration-400"${
-            activeMenu === item.label
-              ? "text-white bg-fuchsia-500"
-              : "py-3 px-6 rounded-lg mb-3"
-          } 
-                `}
+          className={`w-full flex items-center gap-4 text-[15px] px-4 py-2 rounded-lg mb-3 transition-colors duration-300
+            ${activeMenu === item.label
+              ? 'text-white bg-purple-700'
+              : 'text-black bg-white hover:bg-purple-700 hover:text-white'}
+          `}
           onClick={() => handleClick(item.path)}
         >
           <item.icon className="text-xl" />

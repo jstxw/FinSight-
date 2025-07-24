@@ -27,7 +27,7 @@ export const SIDE_MENU_DATA = [
   },
   {
     id: "04",
-    label: "About this website",
+    label: "About",
     icon: LuInfo,
     path: "/about"
   },

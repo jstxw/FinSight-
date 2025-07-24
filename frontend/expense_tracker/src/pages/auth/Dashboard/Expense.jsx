@@ -131,6 +131,16 @@ const Expense = () => {
         >
           <AddExpenseForm onAddExpense={handleAddExpense} />
         </Modal>
+        <Modal
+          isOpen={openDeleteAlert.show}
+          onClose={() => setOpenDeleteAlert({ show: false, data: null })}
+          title="Delete Expense"
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this expense detail?"
+            onDelete={() => deleteExpense(openDeleteAlert.data)}
+          />
+        </Modal>
       </div>
     </DashboardLayout>
   );

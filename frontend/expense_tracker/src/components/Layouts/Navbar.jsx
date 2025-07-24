@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { LuWalletMinimal } from 'react-icons/lu';
 import SideMenu from './SideMenu';
 
 const Navbar = ({ activeMenu }) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   return (
-    <div className="flex gap-5 big-white border boredr-b border-gray-200/50 backdrop-blur-[2px] py-4 px-7 sticky top-0 z-10">
-      <button
-        className="block text-black"
-        onClick={() => {
-          setOpenSideMenu(!openSideMenu);
-        }}
-      >
-        {openSideMenu ? (
-          <HiOutlineX className="text-2xl" />
-        ) : (
-          <HiOutlineMenu className="text-2xl" />
-        )}
-      </button>
-
-      <h2 className="text-lg fond-large text-black">Expense Tracker</h2>
-
+    <div className="flex items-center justify-between px-8 py-4 relative z-20 shadow-lg bg-gradient-to-r from-blue-500 via-teal-400 to-purple-500">
+      <div className="flex items-center gap-4">
+        <button
+          className="block text-white focus:outline-none hover:bg-white/10 rounded-full p-2 transition"
+          onClick={() => {
+            setOpenSideMenu(!openSideMenu);
+          }}
+        >
+          {openSideMenu ? (
+            <HiOutlineX className="text-2xl" />
+          ) : (
+            <HiOutlineMenu className="text-2xl" />
+          )}
+        </button>
+        <span className="flex items-center gap-2">
+          <LuWalletMinimal className="text-3xl text-white drop-shadow-md" />
+          <h2 className="text-2xl font-bold text-white tracking-wide drop-shadow-md">Expense Tracker</h2>
+        </span>
+      </div>
+      {/* You can add a user avatar or quick links here in the future */}
       {openSideMenu && (
-        <div className="fixed top-[61px] -ml-4 bg-white">
+        <div className="fixed top-[61px] left-0 w-64 h-full bg-white shadow-2xl z-30 animate-slide-in">
           <SideMenu activeMenu={activeMenu} />
         </div>
       )}
