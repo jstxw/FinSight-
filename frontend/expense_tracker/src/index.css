@@ -44,5 +44,5 @@
 }
 
 .add-btn-fill {
-    @apply text-white bg-primary
+    @apply text-white bg-gray-50
 }
