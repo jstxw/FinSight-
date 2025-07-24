@@ -1,20 +1,19 @@
-import React, { useState, useContext } from 'react'; // ✅ add useContext
+import React, { useState, useContext } from "react"; // ✅ add useContext
 
-import { useNavigate, Link } from 'react-router-dom';
-import AuthLayout from '../../components/Layouts/AuthLayout';
-import Input from '../../components/Inputs/Inputs';
-import { validateEmail } from '../../utils/helper';
-import { API_PATHS } from '../../utils/apiPaths';
+import { useNavigate, Link } from "react-router-dom";
+import AuthLayout from "../../components/Layouts/AuthLayout";
+import Input from "../../components/Inputs/Inputs";
+import { validateEmail } from "../../utils/helper";
+import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosinstance";
-import { UserContext } from '../../context/userContext';
-
+import { UserContext } from "../../context/userContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -39,7 +38,7 @@ const Login = () => {
 
       const { token, user } = response.data;
 
-      if (response.data.token && response.data.user ) {
+      if (response.data.token && response.data.user) {
         localStorage.setItem("token", response.data.token);
         updateUser(user);
         navigate("/dashboard");

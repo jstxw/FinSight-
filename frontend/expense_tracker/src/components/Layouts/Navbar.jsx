@@ -23,7 +23,7 @@ const Navbar = ({ activeMenu }) => {
         </button>
         <span className="flex items-center gap-2">
           <LuWalletMinimal className="text-3xl text-white drop-shadow-md" />
-          <h2 className="text-2xl font-bold text-white tracking-wide drop-shadow-md">Expense Tracker</h2>
+          <h2 className="text-2xl font-bold text-white tracking-wide drop-shadow-md">FinSight</h2>
         </span>
       </div>
       {/* You can add a user avatar or quick links here in the future */}
