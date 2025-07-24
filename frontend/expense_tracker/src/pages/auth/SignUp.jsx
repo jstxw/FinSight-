@@ -53,7 +53,7 @@ const SignUp = () => {
       if (token) {
         localStorage.setItem('token', token);
         updateUser(user);
-        navigate('/Dashboard');
+        navigate('/Login');
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
