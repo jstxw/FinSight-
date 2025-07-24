@@ -11,12 +11,15 @@ import {
 } from "recharts";
 
 const CustomPieChart = ({
-  data,
+  data = [],
   label,
   totalAmount,
   colors,
   showTextAnchor,
 }) => {
+  if (!Array.isArray(data) || data.length === 0) {
+    return <div className="text-center py-10">No data to display</div>;
+  }
   return (
     <ResponsiveContainer width="100%" height={380}>
       <PieChart>
