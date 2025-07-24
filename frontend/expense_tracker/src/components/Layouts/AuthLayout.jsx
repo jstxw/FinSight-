@@ -18,6 +18,9 @@ const AuthLayout = ({ children }) => {
         src={image1graph}
         className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"/> */}
       </div>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full text-center">
+        <p className="text-xs text-gray-500">Made by Justin Wang for Shipwrecked 2025 😊</p>
+      </div>
     </div>
   );
 };
