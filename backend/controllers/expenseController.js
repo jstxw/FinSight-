@@ -53,21 +53,33 @@ exports.deleteExpense = async (req, res) => {
 exports.downloadExpenseExcel = async (req, res) => {
     const userId = req.user.id;
     try {
-        const Expense = await Expense.find({userId}).sort({date: -1 });
+        const expenses = await Expense.find({userId}).sort({date: -1 });
 
         //Prepare data for excel 
-        const data = expense.map((item) => ({
-            category: item.category,
+        const data = expenses.map((item) => ({
+            Category: item.category,
             Amount: item.amount,
-            Date: item.data,
+            Date: item.date,
         }));
 
         const wb = xlsx.utils.book_new();
         const ws = xlsx.utils.json_to_sheet(data);
         xlsx.utils.book_append_sheet(wb, ws, "Expenses");
-        xlsx.writeFile(wb, 'expense_details.xlsx');
-        res.download('expense_details.xlsx');
-        } catch (error) {
+
+        const path = require('path');
+        const fs = require('fs');
+        const filePath = path.join(__dirname, '../uploads/expense_details.xlsx');
+        xlsx.writeFile(wb, filePath);
+
+        res.download(filePath, 'expense_details.xlsx', (err) => {
+            if (err) {
+                // Optionally handle error
+            } else {
+                // Optionally delete the file after sending
+                // fs.unlinkSync(filePath);
+            }
+        });
+    } catch (error) {
         res.status(500).json({ message: "Server Error" });
-    };
-}
+    }
+};

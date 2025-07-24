@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosinstance";
 import { API_PATHS } from "../../../utils/apiPaths";
 import { useEffect } from "react";
-import Infocard from "../../../components/Infocard";
+import Infocard from "../../../components/Cards/Infocard";
 import { useState } from "react";
 
 import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
 import { IoMdCard } from "react-icons/io";
+import { addThousandsSeparator } from "../../../utils/helper";
 
-const home = () => {
+const Home = () => {
   useUserAuth();
   const navigate = useNavigate();
 
@@ -60,4 +61,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

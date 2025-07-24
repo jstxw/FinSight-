@@ -1,6 +1,8 @@
 
 const xlsx = require('xlsx');
 const Income = require("../models/Income");
+const path = require('path');
+const fs = require('fs');
 
 // Add income sources
 exports.addIncome = async (req, res) => {
@@ -59,15 +61,26 @@ exports.downloadIncomeExcel = async (req, res) => {
         const data = income.map((item) => ({
             Source: item.source,
             Amount: item.amount,
-            Date: item.data,
+            Date: item.date, // fixed typo from item.data to item.date
         }));
 
         const wb = xlsx.utils.book_new();
         const ws = xlsx.utils.json_to_sheet(data);
         xlsx.utils.book_append_sheet(wb, ws, "Income");
-        xlsx.writeFile(wb, 'income_details.xlsx');
-        res.download('income_details.xlsx');
-        } catch (error) {
+
+        // Use absolute path in uploads directory
+        const filePath = path.join(__dirname, '../uploads/income_details.xlsx');
+        xlsx.writeFile(wb, filePath);
+
+        res.download(filePath, 'income_details.xlsx', (err) => {
+            if (err) {
+                // Optionally handle error
+            } else {
+                // Optionally delete the file after sending
+                // fs.unlinkSync(filePath);
+            }
+        });
+    } catch (error) {
         res.status(500).json({ message: "Server Error" });
-    };
-}
+    }
+};

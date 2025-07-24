@@ -1,4 +1,4 @@
-//purpose, checks if i given string is a valid email format. get two initials from a fullname string and return in uppercase
+//purpose, checks if the given string is a valid email format. get two initials from a fullname string and return in uppercase
 
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,3 +20,14 @@ export const getInitials = (name) => {
 
 //extracts the intials of names (for profile pictures)
 //The helper.js file contains reusable utility functions that help simplify and organize common operations used across your app.
+
+export const addThousandsSeparator = (num) => {
+  if (num == null || isNaN(num)) return "";
+
+  const [integerPart, fractionalPart] = num.toString().split(".");
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  return fractionalPart
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
+};
