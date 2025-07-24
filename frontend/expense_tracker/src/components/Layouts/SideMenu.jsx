@@ -13,7 +13,7 @@ const SideMenu = ({ activeMenu }) => {
     if (route.toLowerCase() === "logout") {
       localStorage.clear();
       clearUser();
-      navigate("/login");
+      navigate("/");
       return;
     }
     navigate(route);
