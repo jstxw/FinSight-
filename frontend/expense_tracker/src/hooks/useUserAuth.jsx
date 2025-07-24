@@ -16,14 +16,14 @@ export const useUserAuth = () => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFOO);
+        const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO);
         if (isMounted && response.data) {
           updateUser(response.data);
         }
       } catch (error) {
         console.error("Failed to fetch user info:", error);
         if (isMounted) {
-          clearUser();
+          localStorage.removeItem("token");
           navigate("/login");
         }
       }

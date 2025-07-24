@@ -39,8 +39,8 @@ const Login = () => {
 
       const { token, user } = response.data;
 
-      if (token && user ) {
-        localStorage.setItem("token", token);
+      if (response.data.token && response.data.user ) {
+        localStorage.setItem("token", response.data.token);
         updateUser(user);
         navigate("/dashboard");
       }
