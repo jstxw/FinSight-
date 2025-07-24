@@ -14,7 +14,6 @@ const SideMenu = ({ activeMenu }) => {
       handleLogout();
       return;
     }
-
     navigate(route);
   };
 
@@ -35,18 +34,16 @@ const SideMenu = ({ activeMenu }) => {
           />
         ) : (
           <CharAvater
-            fullName={user?.fullName}
+            fullName={user?.fullName || "Guest User"}
             wdith="w-20"
             height="h-20"
             stlye="text-xl"
           />
         )}
-
         <h5 className="text-gray-950 font-medium leading-6">
-          {user?.fullName || ""}
+          {user?.fullName || "Guest User"}
         </h5>
       </div>
-
       {SIDE_MENU_DATA.map((item, index) => (
         <button
           key={`menu_${index}`}

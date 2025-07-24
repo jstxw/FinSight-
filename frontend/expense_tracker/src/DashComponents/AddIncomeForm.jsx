@@ -65,8 +65,9 @@ const AddIncomeForm = ({ onAddIncome }) => {
       </div>
 
       <button
-        type="submit"
+        type="button"
         className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
+        onClick={() => onAddIncome(income)}
       >
         Add Income
       </button>

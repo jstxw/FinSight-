@@ -3,6 +3,7 @@ import {
   LuHandCoins,
   LuWalletMinimal,
   LuLogOut,
+  LuInfo,
 } from "react-icons/lu";
 
 export const SIDE_MENU_DATA = [
@@ -23,6 +24,12 @@ export const SIDE_MENU_DATA = [
     label: "Expense",
     icon: LuHandCoins,  
     path: "/expense"
+  },
+  {
+    id: "04",
+    label: "About this website",
+    icon: LuInfo,
+    path: "/about"
   },
   {
    id: "06" ,
