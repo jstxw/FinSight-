@@ -11,7 +11,7 @@ import axiosInstance from '../../utils/axiosinstance';
 
 
 const SignUp = () => {
-//const { updateUser } = useContext(userContext); // ✅ Move useContext inside the component
+  const { updateUser } = useContext(UserContext);
   
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,11 +42,14 @@ const SignUp = () => {
 
     // ✅ SignUp API Call
     try {
-      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+      const requestData = {
         fullName,
         email,
         password,
-      });
+      };
+      console.log("📤 Sending registration request:", requestData);
+      
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, requestData);
 
       const { token, user } = response.data;
 
@@ -56,7 +59,8 @@ const SignUp = () => {
         navigate('/Login');
       }
     } catch (error) {
-      if (error.response && error.response.data.message) {
+      console.error("❌ Registration error:", error.response?.data || error.message);
+      if (error.response?.data?.message) {
         setError(error.response.data.message);
       } else {
         setError('Something went wrong. Please try again.');

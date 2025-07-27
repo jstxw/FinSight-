@@ -13,7 +13,7 @@ const generateToken = (id) => {
 // Register User
 exports.registerUser = async (req, res) => {
   console.log("📥 req.body received:", req.body);
-  const { fullName, email, password, profileImageUrl } = req.body; // fullName is not defined, chnage in POSTMAN
+  const { fullName, email, password, profileImageURL } = req.body; // fullName is not defined, chnage in POSTMAN
   // Postman       →      Express Server     →       MongoDB
   // (User Request)        (Route Logic)             (Database)
 
@@ -32,7 +32,7 @@ exports.registerUser = async (req, res) => {
       fullName,
       email,
       password,
-      profileImageUrl,
+      profileImageURL,
     });
 
     res.status(201).json({
